@@ -29,7 +29,7 @@ function App() {
   };
 
   const isValidData =
-    formData.username === "user" && formData.password === "password";
+    formData.username === "username" && formData.password === "password";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,11 +41,24 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    setFormData({
+      username: "",
+      password: "",
+    });
+    setLogisStatus("");
+  };
+
   return (
     <div className="form_section">
       <div className="form">
         <h1 className="heading">Login Page</h1>
-        <div>{loginStatus && <p>{show_message[loginStatus]}</p>}</div>
+        <div>
+          {loginStatus && <p>{show_message[loginStatus]}</p>}
+          {loginStatus == "success" && (
+            <button onClick={handleLogout}>Logout</button>
+          )}
+        </div>
 
         {loginStatus !== "success" && (
           <form onSubmit={handleSubmit} method="post">
