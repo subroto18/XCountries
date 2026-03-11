@@ -1,8 +1,13 @@
 import Styles from "./Card.module.css";
-const Error = () => {
+
+type ErrorProps = {
+  data?: string;
+};
+
+const Error = ({ data }: ErrorProps) => {
   return (
     <div className={Styles.error}>
-      <p>Something went wrong!</p>
+      <p className={Styles.errorText}>{data || "Something went wrong!"}</p>
     </div>
   );
 };

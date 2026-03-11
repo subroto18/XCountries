@@ -10,16 +10,17 @@ const useCountry = () => {
       try {
         setLoading(true);
         const res = await fetch("https://xcountries-backend.labs.crio.do/all");
-
         if (!res.ok) throw new Error("Failed to fetch countries");
 
         const data = await res.json();
         setCountries(data);
       } catch (err: unknown) {
         if (err instanceof Error) {
-          console.log("Error fetching data: " + err.message);
+          console.error("Error fetching data: " + err.message);
           setError(err.message);
         } else {
+          console.error("Error fetching data: Unexpected error occurred");
+
           setError("Unexpected error occurred");
         }
       } finally {

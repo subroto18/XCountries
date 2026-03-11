@@ -18,7 +18,7 @@ function App() {
   if (error)
     return (
       <Layout>
-        <Error />
+        <Error data={error} />
       </Layout>
     );
 
